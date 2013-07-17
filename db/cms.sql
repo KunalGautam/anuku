@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `userid` tinyint(4) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`userid`),
-  UNIQUE KEY `username` (`username`,`password`,`email`)
+  UNIQUE KEY `username` (`username`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
