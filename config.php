@@ -1,13 +1,7 @@
 <?php
-
-
-
-
-$server="localhost";
-$db="DBNAME";
-$user="user";
-$password="PASSWORD";
-
-
+$server = "localhost";
+$db = "cms";
+$user = "root";
+$password = "";
 ?>
 
