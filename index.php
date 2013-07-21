@@ -1,3 +1,16 @@
+<?php
+
+include 'DatabaseConnection.php';
+
+$dbobj1 = new DBConnect();
+
+$dbobj1 -> connect();
+
+$query = 'select * from data';
+
+$results = $dbobj1 -> sqlQuery($query);
+?>
+
 <html>
 	<head>
 		<title> HomePage of CMS ! </title>
@@ -11,11 +24,13 @@
 			</div>
 			<div id="content">
 				<ol>
+					<!-- this part of code needs to have check for syntax errors -->
+					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
+					?>
 					<li>
-						<!-- Dummy text -->
-						Article Title
-						-	Posted Date
+						<a href="article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a>
 					</li>
+					<?php } ?>
 				</ol>
 
 			</div>

@@ -1,22 +1,32 @@
 <?php
-include ("config.php");
+include 'config.php';
 
 class DBConnect {
 
 	// Fucntion	-	Connect
-	// Connects to the Database. Takes $tb as an argument, which can either be the USER table or DATA table for now.
-	function connect($tb) {
+	// Connects to the Database.
+	function connect() {
 		global $server, $password, $user, $db;
 		$con = mysql_connect("$server", "$user", "$password");
+		// // Testing
+		// if ($con){
+		// echo "Yay!\n";
+		// }
+		// // End Testing
 		if (!$con) {
 			echo('Could not connect to database: ' . mysql_error() . '<br/>');
 		}
 
 		mysql_set_charset('utf8', $con);
 
-		$seldb = mysql_select_db($tb);
+		$seldb = mysql_select_db($db);
+		// // Testing
+		// if ($seldb){
+		// echo "Yay again\n";
+		// }
+		// // End Testing
 		if (!$seldb) {
-			echo('Could not connect to table: ' . mysql_error() . '<br/>');
+			echo('Could not connect to database: ' . mysql_error() . '<br/>');
 		}
 	}
 
@@ -27,7 +37,13 @@ class DBConnect {
 
 	//Function to execute Database Queries
 	function sqlQuery($qry) {
-		$result = mysql_query($query);
+		$result = mysql_query($qry);
+		return $result;
+		// // Testing
+		// if ($result){
+		// echo "Yess!\n";
+		// }
+		// // End Testing
 		if (!$result) {
 			echo('Invalid query: ' . mysql_error() . '<br/>');
 		}
