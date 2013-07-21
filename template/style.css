@@ -1,0 +1,33 @@
+
+body {
+	text-align: center;	/*for IE6*/
+	padding: 50px 0 0 0;
+}
+
+a:visited,a:active,a:link{
+	text-decoration: none;
+	color:	#444;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:	#777;
+	
+}
+
+/*main container for index page*/
+#container {
+	width: 960px;
+	margin: 0 auto;
+	text-align: left;
+	font-family: Verdana;
+}
+
+#logo{
+	text-align: center;
+}
+
+#content{
+	font-size: 14 px;
+	padding: 50px 0 0 0;
+}
