@@ -13,10 +13,13 @@ a:hover {
 	color: #777;
 }
 
-li{
+li {
 	padding: 10px 0 10px 0;
 }
 
+p {
+	line-height: 30px;
+}
 /*main container for index page*/
 #container {
 	width: 960px;
@@ -25,7 +28,7 @@ li{
 	font-family: Verdana;
 }
 
-#logo {
+#logo, #adminlogin {
 	text-align: center;
 }
 

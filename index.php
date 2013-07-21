@@ -2,13 +2,13 @@
 
 include 'DatabaseConnection.php';
 
-$dbobj1 = new DBConnect();
+$dbobj = new DBConnect();
 
-$dbobj1 -> connect();
+$dbobj -> connect();
 
 $query = 'select * from data';
 
-$results = $dbobj1 -> sqlQuery($query);
+$results = $dbobj -> sqlQuery($query);
 ?>
 
 <html>
