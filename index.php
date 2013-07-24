@@ -6,7 +6,7 @@ $dbobj = new DBConnect();
 
 $dbobj -> connect();
 
-$query = 'select * from data';
+$query = 'select * from `data` order by `time`  DESC';
 
 $results = $dbobj -> sqlQuery($query);
 ?>
@@ -28,7 +28,13 @@ $results = $dbobj -> sqlQuery($query);
 					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
 					?>
 					<li>
+						<div id="title">
 						<a href="article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a>
+						</div>
+						<?php $postdate = strtotime($row['time']); ?>
+						<div id="posttime">
+						posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
+						</div>
 					</li>
 					<?php } ?>
 				</ol>

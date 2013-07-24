@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
 	$dbobj = new DBConnect();
 	$dbobj -> connect();
 	$id = $_GET['id'];
-	$query = sprintf('select * from data where id = %d', $id);
+	$query = sprintf('select * from `data` where id = %d', $id);
 	$results = $dbobj -> sqlQuery($query);
 	$row = mysql_fetch_array($results, MYSQL_ASSOC);
 	if ($row == null) {
@@ -31,7 +31,10 @@ if (isset($_GET['id'])) {
 			</div>
 			<div id="content">
 				<h3><?php echo "{$row['name']}"; ?></h3>
-				<br />
+				<?php $postdate = strtotime($row['time']); ?>
+				<div id="posttime">
+				posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
+				</div>
 				<p><?php echo "{$row['content']}"; ?></p>
 				<br /><br />
 				<a href="index.php">&larr;Back to HomePage</a>
