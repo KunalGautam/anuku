@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
 				A minimal Content Management System
 			</div>
 			<div id="content">
-				<h3><?php echo "{$row['name']}"; ?></h3>
+				<h2><?php echo "{$row['name']}"; ?></h2>
 				<?php $postdate = strtotime($row['time']); ?>
 				<div id="posttime">
 				posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
