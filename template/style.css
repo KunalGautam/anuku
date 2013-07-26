@@ -34,17 +34,23 @@ p {
 
 #post {
 	font-family: Helvetica;
-	
 }
 
-.post-title{
+#errormsg {
+	font-family: Helvetica;
+	font-weight: bold;
+	color: red;
+	font-size: 12px;
+}
+
+.post-title {
 	width: 100%;
 	height: 40px;
 	font-size: 20px;
 	padding: 5px 5px 5px 5px;
 }
 
-.post-textarea{
+.post-textarea {
 	width: 100%;
 	height: 50%;
 	font-size: 16px;
@@ -52,11 +58,11 @@ p {
 	font-family: Helvetica;
 }
 
-input[type=submit] {
-    width: 200px;
-    height: 50px;
-    font-size: 30px;
-    font-weight: bold;
+.post-submit {
+	width: 200px;
+	height: 50px;
+	font-size: 30px;
+	font-weight: bold;
 }
 
 #content {
