@@ -32,6 +32,11 @@ p {
 	text-align: center;
 }
 
+#login-out {
+	text-align: center;
+	font-weight: bold;
+}
+
 #post {
 	font-family: Helvetica;
 }

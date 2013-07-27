@@ -30,10 +30,12 @@ if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 			<div id="content">
 				<div id="post">
 					<h2>Add New Post</h2>
-					<?php if(isset($error)) { ?>
+					<?php if(isset($error)) {
+					?>
 					<div id="errormsg">
 						<?php echo $error; ?>
-						<br /><br />
+						<br />
+						<br />
 					</div>
 					<?php } ?>
 					<form action="post-add.php" method="post">

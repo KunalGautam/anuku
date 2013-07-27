@@ -13,7 +13,7 @@ $results = $dbobj -> sqlQuery($query);
 
 <html>
 	<head>
-		<title> HomePage of CMS ! </title>
+		<title> Homepage of CMS ! </title>
 		<link rel="stylesheet"	type="text/css"	href="template/style.css"/>
 	</head>
 	<body>
@@ -22,9 +22,12 @@ $results = $dbobj -> sqlQuery($query);
 				<h1><a href="index.php">CMS</a></h1>
 				A minimal Content Management System
 			</div>
+			<br /><br />
+			<div id="login-out">
+				<a href="admin/index.php">LOGIN</a>
+			</div>
 			<div id="content">
 				<ol>
-					<!-- this part of code needs to have check for syntax errors -->
 					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
 					?>
 					<li>
