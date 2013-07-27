@@ -1,35 +1,12 @@
 <?php
 
-include '../DatabaseConnection.php';
+include 'login-logout.php';
 
-session_start();
+$sessionmanagement = new session_management();
 
-if (isset($_SESSION['logged_in'])) {
-	header('Location:home.php');
-	exit();
-} else {
-	if (isset($_POST['username']) && isset($_POST['pass'])) {
-		if (empty($_POST['username']) or empty($_POST['pass'])) {
-			$error = "Username or Password cannot be empty !";
-		} else {
-			$username = $_POST['username'];
-			$pass = md5($_POST['pass']);
-			$dbobj = new DBConnect();
-			$dbobj -> connect();
-			$query = sprintf("select * from `user` where username='%s' and password='%s'", $username, $pass);
-			$results = $dbobj -> sqlQuery($query);
-			$num = mysql_num_rows($results);
-			if ($num == 1) {
-				$_SESSION['logged_in'] = TRUE;
-				header('Location:home.php');
-				exit();
-			} else {
-				$error = "Wrong Username or Password !";
-			}
-		}
-	}
-}
+$sessionmanagement -> session_login();
 ?>
+
 <html>
 	<head>
 		<title> Admin Area of CMS ! </title>

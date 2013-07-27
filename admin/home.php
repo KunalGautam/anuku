@@ -1,6 +1,18 @@
 <?php
 
-include '../DatabaseConnection.php';
+session_start();
+
+// include '../DatabaseConnection.php';
+
+include 'login-logout.php';
+
+if (isset($_POST['logout'])) {
+
+	$sessionmanagement = new session_management();
+
+	$sessionmanagement -> session_logout();
+
+}
 
 if (isset($_SESSION['logged_in'])) {
 
@@ -31,7 +43,9 @@ if (isset($_SESSION['logged_in'])) {
 			<br /><br />
 			<div id="login-out">
 				<!-- fix the logout link/unset the session variable -->
-				<a href="#">LOGOUT</a>
+				<form action="home.php" method="post">
+						<input type="submit" name="logout" value="Logout" />
+				</form>
 			</div>
 			<div id="content">
 				<ol>
