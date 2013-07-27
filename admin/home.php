@@ -41,6 +41,11 @@ if (isset($_SESSION['logged_in'])) {
 				A minimal Content Management System
 			</div>
 			<br /><br />
+			
+			<div id="content">
+			
+			<a href="post-add.php">Add Post</a>
+			</div>
 			<div id="login-out">
 				<!-- fix the logout link/unset the session variable -->
 				<form action="home.php" method="post">
@@ -53,7 +58,7 @@ if (isset($_SESSION['logged_in'])) {
 					?>
 					<li>
 						<div id="title">
-						<a href="../article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a>
+						<a href="../article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;[<a href="post-edit.php?id=<?php echo "{$row['id']}"; ?>"> Edit </a>] &nbsp;&nbsp;&nbsp;&nbsp;[<a href="post-delete.php?id=<?php echo "{$row['id']}"; ?>"> Delete </a>]
 						</div>
 						<?php $postdate = strtotime($row['time']); ?>
 						<div id="posttime">
