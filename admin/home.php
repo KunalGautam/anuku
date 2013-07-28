@@ -45,11 +45,6 @@ if (isset($_SESSION['logged_in'])) {
 				A minimal Content Management System
 			</div>
 			<br /><br />
-			
-			<!-- <div id="content">
-			
-			<a href="post-add.php">Add Post</a>
-			</div> -->
 			<div id="adminlogin">
 				<form action="home.php" method="post">
 						<input type="submit" name="logout" value="Logout" />

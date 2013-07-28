@@ -19,7 +19,7 @@ if (isset($_POST['deleteconfirm'])) {
 
 	$dbobj -> connect();
 
-	$query = sprintf("delete from `data` where `id` = %d", $id);
+	$query = sprintf("delete from `data` where id = %d", $id);
 
 	$results = $dbobj -> sqlQuery($query);
 
