@@ -39,7 +39,7 @@ if ($results) {
 			</div>
 			<?php if ($login == FALSE) { ?>
 			<br /><br />
-			<div id="login-out">
+			<div id="adminlogin">
 				<a href="admin/index.php">LOGIN</a>
 			</div>
 			<?php } ?>

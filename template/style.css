@@ -43,6 +43,12 @@ p {
 	font-size: 12px;
 }
 
+#deletealert {
+	font-weight: bold;
+	text-align: center;
+	color: red;
+}
+
 .post-title {
 	width: 100%;
 	height: 40px;
