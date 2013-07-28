@@ -2,8 +2,6 @@
 
 session_start();
 
-// include '../DatabaseConnection.php';
-
 include 'login-logout.php';
 
 if (isset($_POST['logout'])) {
@@ -23,6 +21,12 @@ if (isset($_SESSION['logged_in'])) {
 	$query = 'select * from `data` order by `time`  DESC';
 
 	$results = $dbobj -> sqlQuery($query);
+
+	if ($results) {
+
+		$dbobj -> disconnect();
+	}
+
 } else {
 	header('Location:index.php');
 	exit();
@@ -46,7 +50,7 @@ if (isset($_SESSION['logged_in'])) {
 			
 			<a href="post-add.php">Add Post</a>
 			</div>
-			<div id="login-out">
+			<div id="adminlogin">
 				<!-- fix the logout link/unset the session variable -->
 				<form action="home.php" method="post">
 						<input type="submit" name="logout" value="Logout" />

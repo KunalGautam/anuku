@@ -1,6 +1,15 @@
 <?php
 
+session_start();
+
 include '../DatabaseConnection.php';
+
+if (!isset($_SESSION['logged_in'])) {
+
+	header('Location:index.php');
+	exit();
+
+}
 
 if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 	if (empty($_POST['title']) or empty($_POST['postcontent'])) {
@@ -12,6 +21,10 @@ if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 		$postcontent = $_POST['postcontent'];
 		$query = sprintf("insert into `data` (name,content) values ('%s','%s')", $name, $postcontent);
 		$results = $dbobj -> sqlQuery($query);
+		if ($results) {
+
+			$dbobj -> disconnect();
+		}
 	}
 }
 ?>

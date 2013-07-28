@@ -9,8 +9,9 @@ if (isset($_GET['id'])) {
 	$query = sprintf('select * from `data` where id = %d', $id);
 	$results = $dbobj -> sqlQuery($query);
 	$row = mysql_fetch_array($results, MYSQL_ASSOC);
-	if ($row == null) {
-		header('Location: index.php');
+	if ($results) {
+
+		$dbobj -> disconnect();
 	}
 } else {
 	header('Location: index.php');

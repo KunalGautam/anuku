@@ -1,5 +1,15 @@
 <?php
 
+session_start();
+
+$login = FALSE;
+
+if (isset($_SESSION['logged_in'])) {
+	
+	$login = TRUE;
+	
+}
+
 include 'DatabaseConnection.php';
 
 $dbobj = new DBConnect();
@@ -9,6 +19,11 @@ $dbobj -> connect();
 $query = 'select * from `data` order by `time`  DESC';
 
 $results = $dbobj -> sqlQuery($query);
+
+if ($results) {
+
+	$dbobj -> disconnect();
+}
 ?>
 
 <html>
@@ -22,10 +37,12 @@ $results = $dbobj -> sqlQuery($query);
 				<h1><a href="index.php">CMS</a></h1>
 				A minimal Content Management System
 			</div>
+			<?php if ($login == FALSE) { ?>
 			<br /><br />
 			<div id="login-out">
 				<a href="admin/index.php">LOGIN</a>
 			</div>
+			<?php } ?>
 			<div id="content">
 				<ol>
 					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {

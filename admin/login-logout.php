@@ -36,6 +36,11 @@ class session_management {
 					} else {
 						return $error = "Wrong Username or Password !";
 					}
+
+					if ($results) {
+
+						$dbobj -> disconnect();
+					}
 				}
 			}
 		}
