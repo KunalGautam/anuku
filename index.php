@@ -42,6 +42,11 @@ if ($results) {
 			<div id="adminlogin">
 				<a href="admin/index.php">LOGIN</a>
 			</div>
+			<?php } elseif ($login == TRUE) {?>
+			<br /><br />
+			<div id="adminlogin">
+				<a href="admin/home.php">ADMIN</a>
+			</div>
 			<?php } ?>
 			<div id="content">
 				<ol>
