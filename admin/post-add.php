@@ -11,7 +11,7 @@ if (!isset($_SESSION['logged_in'])) {
 
 }
 
-if (isset($_POST['title']) && isset($_POST['postcontent'])) {
+if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publish'])) {
 	if (empty($_POST['title']) or empty($_POST['postcontent'])) {
 		$error = "Title or Content cannot be empty !";
 	} else {
@@ -24,9 +24,16 @@ if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 		if ($results) {
 
 			$dbobj -> disconnect();
+
+			header('Location:index.php');
 		}
-	}
+	} 
 }
+
+if (isset($_POST['cancel'])) {
+		header('Location:home.php');
+		exit();
+	}
 ?>
 
 <html>
@@ -58,7 +65,8 @@ if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 						<textarea class="post-textarea" type="text" name="postcontent" placeholder="Add Content"></textarea>
 						<br />
 						<br />
-						<input class="post-submit" type="submit" size="10" value="Publish" />
+						<input class="post-submit" type="submit" name="publish" size="10" value="Publish" />
+						<input class="post-submit" type="submit" name="cancel" size="10" value="Cancel" />
 					</form>
 				</div>
 			</div>

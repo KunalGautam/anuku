@@ -49,6 +49,7 @@ if (isset($_SESSION['logged_in'])) {
 				<form action="home.php" method="post">
 						<input type="submit" name="logout" value="Logout" />
 				</form>
+				<a href="post-add.php">add new post</a>
 			</div>
 			<div id="content">
 				<ol>

@@ -4,7 +4,7 @@ session_start();
 
 include '../DatabaseConnection.php';
 
-if (isset($_SESSION['logged_in']) && (!isset($_POST['update']))) {
+if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST['cancel'])))) {
 
 	$id = $_GET['id'];
 
@@ -53,6 +53,10 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']))) {
 
 	}
 
+} elseif (isset($_POST['cancel'])) {
+	header('Location:home.php');
+	exit();
+
 } else {
 	header('Location:index.php');
 	exit();
@@ -89,6 +93,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']))) {
 						<br />
 						<br />
 						<input class="post-submit" type="submit" name="update" size="10" value="Update" />
+						<input class="post-submit" type="submit" name="cancel" size="10" value="Cancel" />
 					</form>
 				</div>
 			</div>
