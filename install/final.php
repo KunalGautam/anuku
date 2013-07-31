@@ -10,7 +10,7 @@ $email=$_POST['email'];
 
 $query="INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
 $results = $dbobj -> sqlQuery($query);
-$query="INSERT INTO user (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation', '$email'); ";
+$query="INSERT INTO data (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation'); ";
 $results = $dbobj -> sqlQuery($query);
 $dbobj -> disconnect();
 ?>
