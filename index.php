@@ -1,4 +1,9 @@
 <?php
+//Check if config is ok. If not redirect to installation 
+include 'check.php';
+dbconnect($server, $user, $password, $db);
+
+// End Of Check
 
 session_start();
 

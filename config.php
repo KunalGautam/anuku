@@ -4,4 +4,3 @@ $db = "cms";
 $user = "root";
 $password = "";
 ?>
-
