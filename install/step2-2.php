@@ -1,28 +1,3 @@
-<?php
-
-include '../DatabaseConnection.php';
-$dbobj = new DBConnect();
-$dbobj -> connect();
-
-$username=$_POST['user'];
-$password=$_POST['password'];
-$email=$_POST['email'];
-if ($username=="")
-{
-header("Location: step2-2.php?error=1");
-}
-if ($password=="")
-{
-header("Location: step2-2.php?error=2");
-}
-$password=md5($password);
-$query="INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
-$results = $dbobj -> sqlQuery($query);
-$query="INSERT INTO data (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation'); ";
-$results = $dbobj -> sqlQuery($query);
-$dbobj -> disconnect();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,19 +42,51 @@ $dbobj -> disconnect();
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Final Step:</h1>
+          <h1>Site Configuration:</h1>
         </div>
-        
-        <p class="lead">All thing done sucessfully :)</p>
+         <?php 
+		$error = "";
+		if(isset($_GET['error']))
+		{
+			if($_GET['error']=='1'){
+		echo "<code>Username cannot be blank</code>";
+			}
+			if($_GET['error']=='2'){
+		echo "<code>Password cannot be blank</code>";
+			}
+		}
+		?>
+        <p class="lead">We require admin details to proceed with setup.</p>
 		
 		
 		
-				<form class="form-horizontal" action="delete.php" method="post">
+				<form class="form-horizontal" action="final.php" method="post">
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Admin User Name</label>
+					    <div class="col-lg-8">
+					      <input type="text" class="form-control" name="user" placeholder="Select your desired username">
+					    </div>
+					  </div>
+					 
+				<form class="form-horizontal" action="final.php" method="post">
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Admin Email</label>
+					    <div class="col-lg-8">
+					      <input type="text" class="form-control" name="email" placeholder="username@domain.tld">
+					    </div>
+					  </div>
 					  
+					  <div class="form-group">
+					    <label for="inputPassword" class="col-lg-2 control-label">Admin Password</label>
+					    <div class="col-lg-8">
+					      <input type="password" class="form-control" name="password" placeholder="Password">
+					    </div>
+					  </div>
+				
 	
 					<div class="row">
 					 	 <div class="col-lg-3 col-offset-3">&nbsp;</div>
-			  			<div class="col-lg-3 col-offset-3"><button type="submit" class="btn btn-success">Delete install folder and Proceed with New Installation</button></div>
+			  			<div class="col-lg-3 col-offset-3"><button type="submit" class="btn btn-success">Create and Proceed</button></div>
 					</div>
 			 	 </form>
 			
