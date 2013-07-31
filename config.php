@@ -1,6 +1,6 @@
 <?php
 $server = "localhost";
-$db = "cms";
-$user = "root";
+$db = "";
+$user = "";
 $password = "";
 ?>
