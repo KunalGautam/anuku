@@ -14,6 +14,7 @@ if (!isset($_SESSION['logged_in'])) {
 if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publish'])) {
 	if (empty($_POST['title']) or empty($_POST['postcontent'])) {
 		$error = "Title or Content cannot be empty !";
+		$notposted = TRUE;
 	} else {
 		$dbobj = new DBConnect();
 		$dbobj -> connect();
@@ -27,13 +28,13 @@ if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publ
 
 			header('Location:index.php');
 		}
-	} 
+	}
 }
 
 if (isset($_POST['cancel'])) {
-		header('Location:home.php');
-		exit();
-	}
+	header('Location:home.php');
+	exit();
+}
 ?>
 
 <html>
@@ -59,10 +60,10 @@ if (isset($_POST['cancel'])) {
 					</div>
 					<?php } ?>
 					<form action="post-add.php" method="post">
-						<input class="post-title" type="text" name="title" placeholder="Add Title"/>
+						<input class="post-title" type="text" name="title" placeholder="Add Title" <?php if(isset($notposted)) { ?>value="<?php echo $_POST['title']; ?>"<?php } ?>/>
 						<br />
 						<br />
-						<textarea class="post-textarea" type="text" name="postcontent" placeholder="Add Content"></textarea>
+						<textarea class="post-textarea" type="text" name="postcontent" placeholder="Add Content"><?php if(isset($notposted)) { ?><?php echo $_POST['postcontent']; ?><?php } ?></textarea>
 						<br />
 						<br />
 						<input class="post-submit" type="submit" name="publish" size="10" value="Publish" />
