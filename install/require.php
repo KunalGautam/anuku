@@ -16,11 +16,19 @@ echo "<b>Folder Permission Check</b><br />";
 
 
 $filename = '../config.php';
+if (file_exists($filename)) {
+    echo "The Config file exists or created <br/>";
+} else {
+    echo "The file $filename does not exist";
+}
 if (is_writable($filename)) {
     echo 'config file is writable';
 	$score = $score+1;
 } else {
-    echo 'config file is not writable';
+    $fp = fopen("../config.php", "w");
+    $content = "";
+    fwrite($fp, $content);
+    fclose($fp);
 }
 
 
