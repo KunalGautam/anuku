@@ -38,7 +38,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 
 			$postcontent = $_POST['postcontent'];
 
-			$id = $_POST['id'];
+			$id = $_GET['id'];
 
 			$query = sprintf("update `data` set name='%s',content='%s' where id=%d", $name, $postcontent, $id);
 
@@ -77,7 +77,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 			</div>
 			<div id="content">
 				<div id="post">
-					<h2>Edit Post</h2>
+					<h2>Edit Post</h2> 
 					<?php if(isset($error)) {
 					?>
 					<div id="errormsg">
@@ -87,8 +87,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 					</div>
 					<?php } ?>
 					<form action="post-edit.php?id=<?php
-					if (isset($row))
-						echo "{$row['id']}";
+					echo $_GET['id'];
 					?>" method="post">
 						<input class="post-title" type="text" name="title" value="<?php
 						if (isset($row)) { echo "{$row['name']}";
