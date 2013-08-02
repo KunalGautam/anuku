@@ -10,10 +10,12 @@ $email=$_POST['email'];
 if ($username=="")
 {
 header("Location: step2-2.php?error=1");
+exit();
 }
 if ($password=="")
 {
 header("Location: step2-2.php?error=2");
+exit();
 }
 $password=md5($password);
 $query="INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
