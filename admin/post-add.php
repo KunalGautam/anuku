@@ -41,6 +41,9 @@ if (isset($_POST['cancel'])) {
 	<head>
 		<title> Admin Area of CMS ! Add new Post</title>
 		<link rel="stylesheet"	type="text/css"	href="../template/style.css"/>
+        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
 	</head>
 	<body>
 		<div id="container">
