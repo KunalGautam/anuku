@@ -20,7 +20,7 @@ if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publ
 		$dbobj -> connect();
 		$name = $_POST['title'];
 		$postcontent = $_POST['postcontent'];
-		$query = sprintf("insert into `data` (name,content) values ('%s','%s')", $name, $postcontent);
+		$query = sprintf("insert into `data` (name,content) values ('%s','%s')", mysql_real_escape_string($name), mysql_real_escape_string($postcontent));
 		$results = $dbobj -> sqlQuery($query);
 		if ($results) {
 

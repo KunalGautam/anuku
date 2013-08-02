@@ -40,7 +40,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 
 			$id = $_GET['id'];
 
-			$query = sprintf("update `data` set name='%s',content='%s' where id=%d", $name, $postcontent, $id);
+			$query = sprintf("update `data` set name='%s',content='%s' where id=%d", mysql_real_escape_string($name), mysql_real_escape_string($postcontent), $id);
 
 			$results = $dbobj -> sqlQuery($query);
 

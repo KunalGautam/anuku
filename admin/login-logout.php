@@ -26,7 +26,7 @@ class session_management {
 					$pass = md5($_POST['pass']);
 					$dbobj = new DBConnect();
 					$dbobj -> connect();
-					$query = sprintf("select * from `user` where username='%s' and password='%s'", $username, $pass);
+					$query = sprintf("select * from `user` where username='%s' and password='%s'", mysql_escape_string($username), mysql_escape_string($pass));
 					$results = $dbobj -> sqlQuery($query);
 					$num = mysql_num_rows($results);
 					if ($num == 1) {
