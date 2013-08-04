@@ -7,6 +7,7 @@
 * @param string $dirname Directory to delete
 * @return bool Returns TRUE on success, FALSE on failure
 */
+header("Location: ../");
 function rmdirr($dirname)
 {
 // Sanity check
@@ -38,6 +39,6 @@ return rmdir($dirname);
 $dir = "../install";
 rmdirr($dir);
 
-header("Location: ../");
+
 
 ?>

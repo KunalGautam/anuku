@@ -86,7 +86,7 @@ $dbobj -> disconnect();
 			 	 </form>
 			
        </div>
-    </div></div>
+    </div>
 
     <div id="footer">
       <div class="container">
