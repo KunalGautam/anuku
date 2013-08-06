@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'DatabaseConnection.php';
 
 if (isset($_GET['id'])) {
@@ -19,27 +21,101 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title> HomePage of CMS ! </title>
-		<link rel="stylesheet"	type="text/css"	href="template/style.css"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>AnuKu - Content Management Simplicity</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="template/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<!-- Custom CSS for Anuku -->
+		<link href="template/bootstrap/css/stickyfooter.css" rel="stylesheet">
+		<link href="template/style.css" rel="stylesheet">
+		<link href="template/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+		<!-- JS beauties go here -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="template/bootstrap/js/bootstrap.js"></script>
+
 	</head>
+
 	<body>
-		<div id="container">
-			<div id="logo">
-				<h1><a href="index.php">CMS</a></h1>
-				A minimal Content Management System
-			</div>
-			<div id="content">
-				<h2><?php echo "{$row['name']}"; ?></h2>
-				<?php $postdate = strtotime($row['time']); ?>
-				<div id="posttime">
-				posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
+		<!-- Wrap all page content here -->
+		<div id="wrap">
+		<!-- top navigation -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<div class="nav-collapse collapse" id="main-menu">
+						<ul class="nav" id="main-menu-left">
+							<li>
+								<button type="submit" class="btn btn-success" id="button-nav">
+									<a href="admin/post-add.php">Add new post <i class="icon-plus-sign"></i></a>
+								</button>
+							</li>
+						</ul>
+						<ul class="nav pull-right" id="main-menu-right">
+							<?php
+                            if (isset($_SESSION['logged_in'])) { ?>
+                            <li>
+                                    <a href="#">Welcome <?php echo strtoupper($_SESSION['user']); ?> ! <i class="icon-user"></i></a>
+                            </li>
+                            <?php } ?>
+                            <li>
+                                <a rel="tooltip" href="admin/" title="Login to Admin Console">ADMIN <i class="icon-lock"></i></a>
+                            </li>
+                            <?php
+                            if (isset($_SESSION['logged_in'])) { ?>
+                            <li>
+                                    <a rel="tooltip" href="admin/home.php?logout=true" title="Logout">LOGOUT <i class="icon-off"></i></a>
+                            </li>
+                            <?php } ?>
+						</ul>
+					</div>
 				</div>
-				<p><?php echo "{$row['content']}"; ?></p>
-				<br /><br />
-				<a href="index.php">&larr;Back to HomePage</a>
 			</div>
 		</div>
+
+		<!-- Homepage title		 -->
+		<div class="container">
+			<div class="span4 offset4">
+				<div class="page-header text-center">
+					<h1><a href="./">Anuku</a></h1>
+					<p class="lead">
+						Content Management Simplicity
+					</p>
+				</div>
+			</div>
+			<!-- fetch the articles -->
+			<div class="row">
+				<div class="span8 offset2">
+					<div class="articlecontent">
+					<h2><?php echo "{$row['name']}"; ?></h2>
+					<?php $postdate = strtotime($row['time']); ?>
+					<span class="label label-inverse">
+						- posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
+					</span>
+					<p class="postcontent"><?php echo "{$row['content']}"; ?></p>
+					<br />
+					<ul class="pager"><li class="previous"><a href="./"><i class="icon-arrow-left"></i> Back to home</a></li</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- footer -->
+			<div id="footer">
+				<div class="container text-center">
+					<p class="text-muted credit">
+						Anuku | Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a> | Made with Love &amp; Simplicity
+					</p>
+				</div>
+			</div>
 	</body>
 </html>

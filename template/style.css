@@ -1,86 +1,74 @@
-body {
-	text-align: center;	/*for IE6*/
-	padding: 50px 0 0 0;
+.login-page-header-fix {
+	margin-left: -20px;
 }
 
-a:visited, a:active, a:link {
+[class^="icon-"], [class*=" icon-"] {
+	background-image: url("./bootstrap/img/glyphicons-halflings-white.png")
+}
+
+.post-manage-buttons {
+	font-weight: bold;
+}
+
+.page-header a:hover {
 	text-decoration: none;
-	color: #444;
 }
 
-a:hover {
-	text-decoration: underline;
-	color: #777;
+#button-nav {
+	margin-left: 10px;
 }
 
-li {
-	padding: 10px 0 10px 0;
+#button-nav a {
+	color: #FFFFFF;
+	text-decoration: none;
 }
 
-p {
+.article {
+	font-size: 20px;
+	margin: 20px 0 20px 0;
+	padding-bottom: 20px;
+}
+.article a {
+	line-height: 30px;
+	color: #2c3e50;
+}
+
+.article a:hover {
+	text-decoration: none;
+}
+
+.form-login-heading {
+	margin-bottom: 20px;
+	color: #555555;
+}
+
+.articlecontent {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.postcontent {
+	margin-top: 20px;
+	text-align: justify;
 	line-height: 30px;
 }
-/*main container for index page*/
-#container {
-	width: 960px;
-	margin: 0 auto;
-	text-align: left;
-	font-family: Verdana;
-}
 
-#logo, #adminlogin {
-	text-align: center;
-}
-
-#post {
-	font-family: Helvetica;
-}
-
-#errormsg {
-	font-family: Helvetica;
-	font-weight: bold;
-	color: red;
-	font-size: 12px;
-}
-
-#deletealert {
-	font-weight: bold;
-	text-align: center;
-	color: red;
-}
-
-.post-title {
+.input-block-level.title {
+	color: #000000;
 	width: 100%;
-	height: 40px;
-	font-size: 20px;
-	padding: 5px 5px 5px 5px;
-}
-
-.post-textarea {
-	width: 100%;
-	height: 50%;
-	font-size: 16px;
-	padding: 5px 5px 5px 5px;
-	font-family: Helvetica;
-}
-
-.post-submit {
-	width: 200px;
 	height: 50px;
 	font-size: 30px;
-	font-weight: bold;
+	padding: 5px 5px 5px 5px;
 }
 
-#content {
-	text-align: justify;
-	padding: 50px 0 0 0;
+.input-block-level.content {
+	color: #000000;
+	width: 100%;
+	font-size: 14px;
+	padding: 5px 5px 5px 5px;
 }
 
-#title {
-	font-weight: bold;
-}
-
-#posttime {
-	font-size: small;
-	font-style: italic;
+#footer {
+	background-color: #2c3e50;
+	color: #FFFFFF;
 }

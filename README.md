@@ -1,4 +1,5 @@
-##Basic CMS##
+#Anuku#
+##Content Management Simplified##
 
 Our first effort to create a basic and minimalistic CMS (Content Management System), to see if it actually works? :) and to learn a lot from it !
 
@@ -10,11 +11,17 @@ Our first effort to create a basic and minimalistic CMS (Content Management Syst
 
 3. Git for version control
 
-.... and a lot of patience with the slow Internet connection.
+4. Bootstrap for UI
+
+.... and made with Love &amp; Simplicity.
 
 
 **Contributors:**
 
-* *Anurag*	-	anurag@eanurag.com
+* *Anurag*    -	anurag@eanurag.com
 
 * *Kunal*	-	kunal@ikunal.in
+
+###Note: The project is not ready for alpha release yet. Alpha version will be out on our next milestone - 15th August'13###
+<br/>
+**Feel free to fork/use/participate. Open Source License pending.**
