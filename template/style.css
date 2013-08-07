@@ -14,8 +14,9 @@
 	text-decoration: none;
 }
 
-#button-nav {
-	margin-left: 10px;
+.btn.button-nav {
+	margin-top: -10px;
+	margin-bottom: -10px;
 }
 
 #button-nav a {

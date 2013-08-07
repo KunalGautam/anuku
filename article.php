@@ -55,9 +55,11 @@ if (isset($_GET['id'])) {
 					<div class="nav-collapse collapse" id="main-menu">
 						<ul class="nav" id="main-menu-left">
 							<li>
-								<button type="submit" class="btn btn-success" id="button-nav">
-									<a href="admin/post-add.php">Add new post <i class="icon-plus-sign"></i></a>
-								</button>
+								<a href="admin/post-add.php">
+                                <button type="submit" class="btn btn-success button-nav">
+                                    Add new post <i class="icon-plus-sign"></i>
+                                </button>
+                                </a>
 							</li>
 						</ul>
 						<ul class="nav pull-right" id="main-menu-right">

@@ -88,9 +88,11 @@ if (isset($_SESSION['logged_in'])) {
 								</li>
 
 								<li>
-									<button type="submit" class="btn btn-success" id="button-nav">
-										<a href="post-add.php">Add new post <i class="icon-plus-sign"></i></a>
-									</button>
+    								<a href="admin/post-add.php">
+                                    <button type="submit" class="btn btn-success button-nav">
+                                        Add new post <i class="icon-plus-sign"></i>
+                                    </button>
+                                    </a>
 								</li>
 							</ul>
 							<ul class="nav pull-right" id="main-menu-right">
