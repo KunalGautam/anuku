@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Installation of AnuKu CMS</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/stickyfooter.css" rel="stylesheet">
   </head>
-
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Fixed navbar -->
       <div class="navbar navbar-fixed-top">
         <div class="container">
@@ -38,7 +32,6 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
@@ -55,20 +48,16 @@
 			<li>Proper Folder Permissions</li>
 			<li>Working PC and Network(Without that how can install proceed? :P)</li>
 		</ul></p>
-		
 			<div class="row">
 			 	 <div class="col-lg-3 col-offset-3">&nbsp;</div>
 	  			<div class="col-lg-3 col-offset-3"><a href="check.php"  type="button" class="btn btn-success">Proceed With Installation</a></div>
-			  
 			</div>
        </div>
     </div>
-
     <div id="footer">
       <div class="container">
         <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a></p>
       </div>
     </div>
-
   </body>
 </html>

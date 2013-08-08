@@ -193,26 +193,20 @@ function split_sql_file($sql, $delimiter)
 $conn = @mysql_pconnect($_POST['server'], $_POST['user'], $_POST['password']); // "@" is necessary.
 if(!$conn) 
 {
-header("Location: step1.php?error=1");
+header("Location: step1.php?error=1");  //Redirect as server info is incorrectly fed
 }
 
 if(!mysql_select_db($_POST['db'], $conn)) 
 {
-header("Location: step1.php?error=2");
+header("Location: step1.php?error=2"); // redirect as user don't have that db created
 }
-
-
+//From where to import sql file
 $dbms_schema = '../db/cms.sql';
-
 $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem ');
 $sql_query = remove_remarks($sql_query);
 $sql_query = split_sql_file($sql_query, ';');
-
-
-
 mysql_connect($_POST['server'], $_POST['user'], $_POST['password']) or die('error connection');
 mysql_select_db($_POST['db']) or die('error database selection');
-
 $i=1;
 foreach($sql_query as $sql){
 echo $i++;
@@ -220,12 +214,8 @@ echo "
 ";
 mysql_query($sql) or die('error in query');
 }
-
-
-
 mysql_close();
-
-
+//After successful import, it will create config file with all configs
 $server = $_POST['server'];
 $user = $_POST['user'];
 $password = $_POST['password'];
@@ -235,12 +225,8 @@ $savestring = "<?php\n\$server = \"" . $server . "\";\n\$user = \"" . $user .
 "\";\n\$password = \"" . $password . "\";\n\$db = \"" . $db . "\";\n?>" ;
 fwrite($fp, $savestring);
 fclose($fp);
-
-
-
-
+//End of config file update
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -248,21 +234,15 @@ fclose($fp);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Installation of AnuKu CMS</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/stickyfooter.css" rel="stylesheet">
   </head>
-
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Fixed navbar -->
       <div class="navbar navbar-fixed-top">
         <div class="container">
@@ -281,55 +261,42 @@ fclose($fp);
           </div><!--/.nav-collapse -->
         </div>
       </div>
-
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
           <h1>Site Configuration:</h1>
         </div>
-        
         <p class="lead">We require admin details to proceed with setup.</p>
-		
-		
-		
-				<form class="form-horizontal" action="final.php" method="post">
+			<form class="form-horizontal" action="final.php" method="post">
 					  <div class="form-group">
 					    <label class="col-lg-2 control-label">Admin User Name</label>
 					    <div class="col-lg-8">
 					      <input type="text" class="form-control" name="user" placeholder="Select your desired username">
 					    </div>
 					  </div>
-					 
-				<form class="form-horizontal" action="final.php" method="post">
 					  <div class="form-group">
 					    <label class="col-lg-2 control-label">Admin Email</label>
 					    <div class="col-lg-8">
 					      <input type="text" class="form-control" name="email" placeholder="username@domain.tld">
 					    </div>
 					  </div>
-					  
 					  <div class="form-group">
 					    <label for="inputPassword" class="col-lg-2 control-label">Admin Password</label>
 					    <div class="col-lg-8">
 					      <input type="password" class="form-control" name="password" placeholder="Password">
 					    </div>
 					  </div>
-				
-	
-					<div class="row">
+				<div class="row">
 					 	 <div class="col-lg-3 col-offset-3">&nbsp;</div>
 			  			<div class="col-lg-3 col-offset-3"><button type="submit" class="btn btn-success">Create and Proceed</button></div>
 					</div>
 			 	 </form>
-			
        </div>
     </div>
-
     <div id="footer">
       <div class="container">
         <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a></p>
       </div>
     </div>
-
   </body>
 </html>

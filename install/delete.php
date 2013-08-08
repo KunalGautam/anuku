@@ -14,12 +14,10 @@ function rmdirr($dirname)
 if (!file_exists($dirname)) {
 return false;
 }
-
 // Simple delete for a file
 if (is_file($dirname)) {
 return unlink($dirname);
 }
-
 // Loop through the folder
 $dir = dir($dirname);
 while (false !== $entry = $dir->read()) {
@@ -27,18 +25,13 @@ while (false !== $entry = $dir->read()) {
 if ($entry == '.' || $entry == '..') {
 continue;
 }
-
 // Recurse
 rmdirr("$dirname/$entry");
 }
-
 // Clean up
 $dir->close();
 return rmdir($dirname);
 }
 $dir = "../install";
 rmdirr($dir);
-
-
-
 ?>

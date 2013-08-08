@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Installation of AnuKu CMS</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/stickyfooter.css" rel="stylesheet">
   </head>
-
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Fixed navbar -->
       <div class="navbar navbar-fixed-top">
         <div class="container">
@@ -38,7 +32,6 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
@@ -57,9 +50,6 @@
 		}
 		?>
         <p class="lead">We require admin details to proceed with setup.</p>
-		
-		
-		
 				<form class="form-horizontal" action="final.php" method="post">
 					  <div class="form-group">
 					    <label class="col-lg-2 control-label">Admin User Name</label>
@@ -67,8 +57,6 @@
 					      <input type="text" class="form-control" name="user" placeholder="Select your desired username">
 					    </div>
 					  </div>
-					 
-				<form class="form-horizontal" action="final.php" method="post">
 					  <div class="form-group">
 					    <label class="col-lg-2 control-label">Admin Email</label>
 					    <div class="col-lg-8">
@@ -82,22 +70,17 @@
 					      <input type="password" class="form-control" name="password" placeholder="Password">
 					    </div>
 					  </div>
-				
-	
 					<div class="row">
 					 	 <div class="col-lg-3 col-offset-3">&nbsp;</div>
 			  			<div class="col-lg-3 col-offset-3"><button type="submit" class="btn btn-success">Create and Proceed</button></div>
 					</div>
 			 	 </form>
-			
-       </div>
+			</div>
     </div>
-
     <div id="footer">
       <div class="container">
         <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a></p>
       </div>
     </div>
-
-  </body>
+ </body>
 </html>
