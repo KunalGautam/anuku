@@ -41,27 +41,24 @@
         <p class="lead">
 		<div class="row">
 		  	<div class="col-6 col-sm-6 col-lg-6">
-              <?php 
-              //Calling require.php for checking the prequisites and assigning scores
-              include ('require.php'); 
-              ?></div>
+              <?php
+//Calling require.php for checking the prequisites and assigning scores
+include ('require.php');
+?></div>
 		  	<div class="col-6 col-sm-6 col-lg-6"></div>
 		</div>
 		<div class="row">
 		  	<div class="col-lg-4">&nbsp;</div>
 	  		<div class="col-lg-4 col-offset-4">
 			<?php
-            //If any of the prequisites is not fullfiled, score will be less then 2 and hence recheck button will appear.
-			if ($score < "2")
-			{
-			echo "<a href=\"check.php\" type=\"button\" class=\"btn btn-primary\">Recheck Requirements</a>&nbsp;";
-			echo "<a href=\"step1.php\" type=\"button\" class=\"btn btn-danger\">Proceed Anyway</a>";
-			}
-			else
-			{
-			echo "<a href=\"step1.php\" type=\"button\" class=\"btn btn-success\">Proceed</a>";
-			}
-			?>
+//If any of the prequisites is not fullfiled, score will be less then 2 and hence recheck button will appear.
+if ($score < "2") {
+    echo "<a href=\"check.php\" type=\"button\" class=\"btn btn-primary\">Recheck Requirements</a>&nbsp;";
+    echo "<a href=\"step1.php\" type=\"button\" class=\"btn btn-danger\">Proceed Anyway</a>";
+} else {
+    echo "<a href=\"step1.php\" type=\"button\" class=\"btn btn-success\">Proceed</a>";
+}
+?>
 			</div>
 		</div>
 		</p>	

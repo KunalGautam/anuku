@@ -37,18 +37,17 @@
         <div class="page-header">
           <h1>Site Configuration:</h1>
         </div>
-         <?php 
-		$error = "";
-		if(isset($_GET['error']))
-		{
-			if($_GET['error']=='1'){
-		echo "<code>Username cannot be blank</code>";
-			}
-			if($_GET['error']=='2'){
-		echo "<code>Password cannot be blank</code>";
-			}
-		}
-		?>
+         <?php
+$error = "";
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == '1') {
+        echo "<code>Username cannot be blank</code>";
+    }
+    if ($_GET['error'] == '2') {
+        echo "<code>Password cannot be blank</code>";
+    }
+}
+?>
         <p class="lead">We require admin details to proceed with setup.</p>
 				<form class="form-horizontal" action="final.php" method="post">
 					  <div class="form-group">

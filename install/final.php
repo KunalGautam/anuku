@@ -1,27 +1,25 @@
 <?php
 include '../DatabaseConnection.php';
 $dbobj = new DBConnect();
-$dbobj -> connect();
-$username=$_POST['user'];
-$password=$_POST['password'];
-$email=$_POST['email'];
-if ($username=="")
-{
-header("Location: step2-2.php?error=1"); // redirect if username is blank to step2-2.php. 
-exit();
+$dbobj->connect();
+$username = $_POST['user'];
+$password = $_POST['password'];
+$email = $_POST['email'];
+if ($username == "") {
+    header("Location: step2-2.php?error=1"); // redirect if username is blank to step2-2.php.
+    exit();
 }
-if ($password=="")
-{
-header("Location: step2-2.php?error=2"); // redirect if password is blank to step2-2.php. 
-exit();
+if ($password == "") {
+    header("Location: step2-2.php?error=2"); // redirect if password is blank to step2-2.php.
+    exit();
 }
 // Storing MD5 Checksum of password and create default post.
-$password=md5($password);
-$query="INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
-$results = $dbobj -> sqlQuery($query);
-$query="INSERT INTO data (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation'); ";
-$results = $dbobj -> sqlQuery($query);
-$dbobj -> disconnect();
+$password = md5($password);
+$query = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
+$results = $dbobj->sqlQuery($query);
+$query = "INSERT INTO data (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation'); ";
+$results = $dbobj->sqlQuery($query);
+$dbobj->disconnect();
 ?>
 <!DOCTYPE html>
 <html lang="en">

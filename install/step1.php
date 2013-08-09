@@ -37,21 +37,18 @@
         <div class="page-header">
           <h1>MySQL Database Connectivity Details:</h1>
         </div>
-        <?php 
-        // as this file may be called directly from check.php, no error number is assigned. Hence initialised it with blank error variable
-		$error = "";
-		if(isset($_GET['error']))
-		{
-		      // This error is called from step2.php is database detail is wrong.
-			if($_GET['error']=='1'){ 
-		echo "<code>Error while connecting database. Please check all details again</code>";
-			}
-			else
-			{
-			echo "<code>Database doesn't exsists. Please check all details again</code>";
-			}
-		}
-		?>
+        <?php
+// as this file may be called directly from check.php, no error number is assigned. Hence initialised it with blank error variable
+$error = "";
+if (isset($_GET['error'])) {
+    // This error is called from step2.php is database detail is wrong.
+    if ($_GET['error'] == '1') {
+        echo "<code>Error while connecting database. Please check all details again</code>";
+    } else {
+        echo "<code>Database doesn't exsists. Please check all details again</code>";
+    }
+}
+?>
         <p class="lead">We require some details to setup config file.</p>
 				<form class="form-horizontal" action="step2.php" method="post">
 					  <div class="form-group">
