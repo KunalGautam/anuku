@@ -44,8 +44,8 @@
         <div class="page-header">
           <h1>Release Notes Ver 0.1:</h1>
         </div>
-        <p class="lead"><code>Space left intentionally </code></p>
-        
+        <p class="lead"><code>Add/Delete/Modify Content.</code></p>
+        <p class="lead"><code>Sort Content by Posting Date.</code></p>
       </div>
     </div>
 
