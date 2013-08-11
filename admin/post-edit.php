@@ -4,6 +4,7 @@ session_start();
 
 include '../DatabaseConnection.php';
 
+// if the session is set and there is no post or post cancel, just fetch the article from DB and fill up the edit form
 if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST['cancel'])))) {
 
 	$id = $_GET['id'];
@@ -22,6 +23,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 
 		$dbobj -> disconnect();
 	}
+    // if post update, update the record in DB
 } elseif (isset($_POST['update'])) {
 
 	if (isset($_POST['title']) && isset($_POST['postcontent'])) {
@@ -43,7 +45,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 			$query = sprintf("update `data` set name='%s',content='%s' where id=%d", mysql_real_escape_string($name), mysql_real_escape_string($postcontent), $id);
 
 			$results = $dbobj -> sqlQuery($query);
-
+            //if update successful, set the successful alert flag
 			if ($results) {
 				$_SESSION['session_alert'] = 'Post updated';
                 $_SESSION['session_flag'] = "alert-info";
@@ -54,7 +56,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 		}
 
 	}
-
+    // if post cancel, set the cancel alert flag
 } elseif (isset($_POST['cancel'])) {
 	$_SESSION['session_alert'] = "Changes discarded";
     $_SESSION['session_flag'] = "alert";
@@ -87,10 +89,9 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 		<!-- JS beauties go here -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="../template/bootstrap/js/bootstrap.js"></script>
-		
-		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-		<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-
+		<!-- Disabling the editor plugin for now as it breaks the responsive layout -->
+		<!-- <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+		<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script> -->
 	</head>
 
 	<body>
@@ -110,6 +111,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 				</div>
 			<div class="row">
 				<div class="span4 offset4">
+				    <!-- alert message popup for empty post title/content -->
 					<?php if(isset($error)) {
 					?>
 					<div class="alert alert-error text-center">

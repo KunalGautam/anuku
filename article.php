@@ -4,6 +4,7 @@ session_start();
 
 include 'DatabaseConnection.php';
 
+// Retrieve single article from DB
 if (isset($_GET['id'])) {
 	$dbobj = new DBConnect();
 	$dbobj -> connect();
@@ -55,6 +56,7 @@ if (isset($_GET['id'])) {
 					<div class="nav-collapse collapse" id="main-menu">
 						<ul class="nav" id="main-menu-left">
 							<li>
+							    <!-- add new post button -->
 								<a href="admin/post-add.php">
                                 <button type="submit" class="btn btn-success button-nav">
                                     Add new post <i class="icon-plus-sign"></i>
@@ -62,6 +64,7 @@ if (isset($_GET['id'])) {
                                 </a>
 							</li>
 						</ul>
+						<!-- right navigation menu -->
 						<ul class="nav pull-right" id="main-menu-right">
 							<?php
                             if (isset($_SESSION['logged_in'])) { ?>
@@ -94,16 +97,17 @@ if (isset($_GET['id'])) {
 					</p>
 				</div>
 			</div>
-			<!-- fetch the articles -->
 			<div class="row">
+			    <!-- display the title -->
 				<div class="span8 offset2">
 					<div class="articlecontent">
 					<h2><?php echo "{$row['name']}"; ?></h2>
 					<?php $postdate = strtotime($row['time']); ?>
+					<!-- display posted time -->
 					<span class="label label-inverse">
 						- posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
 					</span>
-					<p class="postcontent"><?php echo "{$row['content']}"; ?></p>
+					<p><?php echo "{$row['content']}"; ?></p>
 					<br />
 					<ul class="pager"><li class="previous"><a href="./"><i class="icon-arrow-left"></i> Back to home</a></li</ul>
 					</div>

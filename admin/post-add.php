@@ -4,6 +4,7 @@ session_start();
 
 include '../DatabaseConnection.php';
 
+// separate session check
 if (!isset($_SESSION['logged_in'])) {
 
 	header('Location:index.php');
@@ -11,6 +12,7 @@ if (!isset($_SESSION['logged_in'])) {
 
 }
 
+// check if the post title and content are set before updating the DB with new record
 if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publish'])) {
 	if (empty($_POST['title']) or empty($_POST['postcontent'])) {
 		$error = "Title or Content cannot be empty !";
@@ -22,16 +24,16 @@ if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publ
 		$postcontent = $_POST['postcontent'];
 		$query = sprintf("insert into `data` (name,content) values ('%s','%s')", mysql_real_escape_string($name), mysql_real_escape_string($postcontent));
 		$results = $dbobj -> sqlQuery($query);
+        //if insert of new post successful, set the successful alert flag
 		if ($results) {
 			$_SESSION['session_alert'] = "New Post added";
             $_SESSION['session_flag'] = "alert-info";
 			$dbobj -> disconnect();
-
 			header('Location:index.php');
 		}
 	}
 }
-
+// if new post cancel, set the cancel alert flag
 if (isset($_POST['cancel'])) {
 	$_SESSION['session_alert'] = "New Post discarded";
     $_SESSION['session_flag'] = "alert";
@@ -60,11 +62,11 @@ if (isset($_POST['cancel'])) {
 		<!-- JS beauties go here -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="../template/bootstrap/js/bootstrap.js"></script>
-
-		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <!-- Disabling the editor plugin for now as it breaks the responsive layout -->
+		<!-- <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			bkLib.onDomLoaded(nicEditors.allTextAreas);
-		</script>
+		</script> -->
 
 	</head>
 
@@ -85,6 +87,7 @@ if (isset($_POST['cancel'])) {
 				</div>
 				<div class="row">
 					<div class="span4 offset4">
+					    <!-- alert message popup for empty post title/content -->
 						<?php if(isset($error)) {
 						?>
 						<div class="alert alert-error text-center">
@@ -104,7 +107,6 @@ if (isset($_POST['cancel'])) {
 
 								<br />
 								<textarea class="input-block-level content" rows="15" type="text" name="postcontent" placeholder="Add Content"><?php if(isset($notposted)) { ?><?php echo $_POST['postcontent']; ?><?php } ?></textarea>
-
 						</div>
 					</div>
 					<br />

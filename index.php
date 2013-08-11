@@ -8,6 +8,16 @@ session_start();
 
 include 'DatabaseConnection.php';
 
+// function logic to strip the snippet for article on homepage if the length is > 300
+function truncate_content($strip) {
+    $strip = substr($strip,0,300);
+    $strip = substr($strip,0,strrpos($strip," "));
+    return $strip;
+}
+// end of snippet function
+
+// Retrieve all the artciles from DB to show on homepage
+// also can sort the articles based on time
 $dbobj = new DBConnect();
 
 $dbobj -> connect();
@@ -64,6 +74,7 @@ if ($results) {
 					<div class="nav-collapse collapse" id="main-menu">
 						<ul class="nav" id="main-menu-left">
 							<li class="dropdown">
+							    <!-- dropdown to sort the articles based on time -->
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">SORT <i class="icon-time"></i><b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
@@ -77,6 +88,7 @@ if ($results) {
 							</li>
 
 							<li>
+							    <!-- add new post button -->
 							    <a href="admin/post-add.php">
 								<button type="submit" class="btn btn-success button-nav">
 									Add new post <i class="icon-plus-sign"></i>
@@ -84,6 +96,7 @@ if ($results) {
 								</a>
 							</li>
 						</ul>
+						<!-- right navigation menu -->
 						<ul class="nav pull-right" id="main-menu-right">
 						    <?php
 						    if (isset($_SESSION['logged_in'])) { ?>
@@ -116,17 +129,32 @@ if ($results) {
 					</p>
 				</div>
 			</div>
-
 			<!-- fetch the articles -->
 			<div class="row">
 				<div class="span8 offset2">
 					<ol>
 					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
 					?>
+					<!-- display the title -->
 					<li class="article">
 						<h4>
 						<a href="article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a>
 						</h4>
+						<!-- display the post snippet -->
+						<blockquote class="snippet">
+						    <?php
+						    $article_content = strip_tags($row['content']);
+						      $len = strlen($article_content);
+                            if($len >= 300) {
+                                $truncated = truncate_content($article_content);
+                                echo $truncated;
+                            }
+                            else {
+                                echo $article_content;
+                            }
+						    ?>
+						</blockquote>
+						<!-- display posted time -->
 						<?php $postdate = strtotime($row['time']); ?>
 						<span class="label label-inverse">
 						- posted on <?php echo date('jS F Y, h:i A', $postdate); ?>

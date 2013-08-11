@@ -6,6 +6,10 @@
 	background-image: url("./bootstrap/img/glyphicons-halflings-white.png")
 }
 
+blockquote {
+	font-size: 14px;
+}
+
 .post-manage-buttons {
 	font-weight: bold;
 }
@@ -34,6 +38,10 @@
 	color: #2c3e50;
 }
 
+.snippet {
+	text-align: justify;
+}
+
 .article a:hover {
 	text-decoration: none;
 }
@@ -48,7 +56,7 @@
 	margin-bottom: 20px;
 }
 
-.postcontent {
+.articlecontent p {
 	margin-top: 20px;
 	text-align: justify;
 	line-height: 30px;

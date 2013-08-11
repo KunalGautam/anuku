@@ -4,6 +4,7 @@ session_start();
 
 include 'login-logout.php';
 
+// destory the session and logout
 if (isset($_GET['logout'])) {
 
 	$sessionmanagement = new session_management();
@@ -12,6 +13,7 @@ if (isset($_GET['logout'])) {
 
 }
 
+// check session and retrieve all the artciles from DB
 if (isset($_SESSION['logged_in'])) {
 
 	$dbobj = new DBConnect();
@@ -75,6 +77,7 @@ if (isset($_SESSION['logged_in'])) {
 						<div class="nav-collapse collapse" id="main-menu">
 							<ul class="nav" id="main-menu-left">
 								<li class="dropdown">
+								    <!-- dropdown to sort the articles based on time -->
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#">SORT <i class="icon-time"></i><b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li>
@@ -88,13 +91,15 @@ if (isset($_SESSION['logged_in'])) {
 								</li>
 
 								<li>
-    								<a href="admin/post-add.php">
+								    <!-- add new post button -->
+    								<a href="post-add.php">
                                     <button type="submit" class="btn btn-success button-nav">
                                         Add new post <i class="icon-plus-sign"></i>
                                     </button>
                                     </a>
 								</li>
 							</ul>
+							<!-- right navigation menu -->
 							<ul class="nav pull-right" id="main-menu-right">
 								<li>
 									<a href="#">Welcome <?php echo strtoupper($_SESSION['user']); ?> ! <i class="icon-user"></i></a>
@@ -121,7 +126,6 @@ if (isset($_SESSION['logged_in'])) {
 						</p>
 					</div>
 				</div>
-
 				<!-- fetch the articles -->
 				<?php if(isset($_SESSION['session_alert']) && isset($_SESSION['session_flag'])) { ?>
 					<div class="span4 offset4">
@@ -137,16 +141,17 @@ if (isset($_SESSION['logged_in'])) {
 					<ol>
 					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
 					?>
-					
-					
+					<!-- display the title -->
 					<li class="article">
 						<h4>
 						<a href="../article.php?id=<?php echo "{$row['id']}"; ?>"> <?php echo "{$row['name']}"; ?></a></h4>
 						<div class="row">
 						<div class="span8">
+						<!-- display posted time -->
 						<?php $postdate = strtotime($row['time']); ?>
 						<span class="label label-inverse">
 						- posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
+						<!-- post edit and delete -->
 						</span>
 						<div class="btn-group pull-right">
 						<a class="btn btn-warning btn-small post-manage-buttons" href="post-edit.php?id=<?php echo "{$row['id']}"; ?>"><i class="icon-edit"></i> Edit</a>

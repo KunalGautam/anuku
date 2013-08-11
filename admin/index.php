@@ -1,6 +1,8 @@
 <?php
+
 include 'login-logout.php';
 
+// start a new session and login
 $sessionmanagement = new session_management();
 
 $sessionmanagement -> session_login();
@@ -48,6 +50,7 @@ $sessionmanagement -> session_login();
                                 <legend class="text-center">
                                     Login to continue
                                 </legend>
+                                <!-- alert message popup for invalid/empty login credentials -->
                                 <?php if(isset($error)) {
                                 ?>
                                 <div class="alert alert-error text-center">
