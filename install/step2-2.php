@@ -46,6 +46,10 @@ if (isset($_GET['error'])) {
     if ($_GET['error'] == '2') {
         echo "<code>Password cannot be blank</code>";
     }
+    if ($_GET['error'] == '3') {
+        echo "<code>Please enter valid e-mail ID!</code>";
+    }
+    
 }
 ?>
         <p class="lead">We require admin details to proceed with setup.</p>
