@@ -56,7 +56,7 @@
     </div>
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a></p>
+        <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/anuku">GitHub</a></p>
       </div>
     </div>
   </body>
