@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 17, 2013 at 05:30 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Aug 14, 2013 at 07:31 AM
+-- Server version: 5.6.11
+-- PHP Version: 5.5.1
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `cms`
 --
+CREATE DATABASE IF NOT EXISTS `cms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `cms`;
 
 -- --------------------------------------------------------
 
@@ -33,11 +36,6 @@ CREATE TABLE IF NOT EXISTS `data` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `data`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -50,13 +48,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `userid` tinyint(4) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`userid`),
-  UNIQUE KEY `username` (`username`,`email`)
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `user`
---
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
