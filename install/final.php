@@ -9,6 +9,14 @@ if ($username == "") {
     header("Location: step2-2.php?error=1"); // redirect if username is blank to step2-2.php.
     exit();
 }
+if ($email == "") {
+    header("Location: step2-2.php?error=3"); // redirect if email is blank to step2-2.php. If it is not blank, check for valid email.
+    exit();
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: step2-2.php?error=3");
+    exit();
+}
+
 if ($password == "") {
     header("Location: step2-2.php?error=2"); // redirect if password is blank to step2-2.php.
     exit();
@@ -71,7 +79,7 @@ $dbobj->disconnect();
     </div>
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a></p>
+        <p class="text-muted credit">Fork our code at <a href="https://github.com/eanurag/anuku">GitHub</a></p>
       </div>
     </div>
   </body>
