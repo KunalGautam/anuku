@@ -110,7 +110,7 @@ if (isset($_POST['deleteconfirm'])) {
 			<div id="footer">
 				<div class="container text-center">
 					<p class="text-muted credit">
-						Anuku | Fork our code at <a href="https://github.com/eanurag/cms">GitHub</a> | Made with Love &amp; Simplicity
+						Anuku | Fork our code at <a href="https://github.com/eanurag/anuku">GitHub</a> | Made with Love &amp; Simplicity
 					</p>
 				</div>
 			</div>
