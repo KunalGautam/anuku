@@ -181,7 +181,7 @@ if (!mysql_select_db($_POST['db'], $conn)) {
     header("Location: step1.php?error=2"); // redirect as user don't have that db created
 }
 //From where to import sql file
-$dbms_schema = '../db/cms.sql';
+$dbms_schema = 'db/cms.sql';
 $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem ');
 $sql_query = remove_remarks($sql_query);
 $sql_query = split_sql_file($sql_query, ';');

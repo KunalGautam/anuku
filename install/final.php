@@ -2,7 +2,7 @@
 include '../DatabaseConnection.php';
 $dbobj = new DBConnect();
 $dbobj->connect();
-$username = $_POST['user'];
+$username = strtolower($_POST['user']);
 $password = $_POST['password'];
 $email = $_POST['email'];
 if ($username == "") {
@@ -22,7 +22,7 @@ if ($password == "") {
     exit();
 }
 // Storing MD5 Checksum of password and create default post.
-$password = md5($password);
+$password = md5(strtolower(($password)));
 $query = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email'); ";
 $results = $dbobj->sqlQuery($query);
 $query = "INSERT INTO data (name, content) VALUES ('Hello World!', 'Welcome to new AnuKu CMS installation'); ";

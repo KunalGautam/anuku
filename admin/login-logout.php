@@ -21,8 +21,8 @@ class session_management {
 				if (empty($_POST['username']) or empty($_POST['pass'])) {
 					return $error = "Username or Password cannot be empty !";
 				} else {
-					$username = $_POST['username'];
-					$pass = md5($_POST['pass']);
+					$username = strtolower($_POST['username']);
+					$pass = md5(strtolower($_POST['pass']));
 					$dbobj = new DBConnect();
 					$dbobj -> connect();
 					$query = sprintf("select * from `user` where username='%s' and password='%s'", mysql_escape_string($username), mysql_escape_string($pass));
