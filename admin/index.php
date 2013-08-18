@@ -26,7 +26,7 @@ $sessionmanagement -> session_login();
         <link href="../template/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
         <!-- JS beauties go here -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../template/bootstrap/js/jquery-1.9.1.min.js"></script>
         <script src="../template/bootstrap/js/bootstrap.js"></script>
 
     </head>
