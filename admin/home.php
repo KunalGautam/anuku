@@ -61,7 +61,7 @@ if (isset($_SESSION['logged_in'])) {
 		<link href="../template/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 		<!-- JS beauties go here -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="../template/bootstrap/js/jquery-1.9.1.min.js"></script>
 		<script src="../template/bootstrap/js/bootstrap.js"></script>
 
 	</head>
@@ -149,11 +149,19 @@ if (isset($_SESSION['logged_in'])) {
 						<div class="span8">
 						<!-- display posted time -->
 						<?php $postdate = strtotime($row['time']); ?>
+						<span class="pull-left visible-desktop visible-tablet">
 						<span class="label label-inverse">
 						- posted on <?php echo date('jS F Y, h:i A', $postdate); ?>
-						<!-- post edit and delete -->
 						</span>
-						<div class="btn-group pull-right">
+						</span>
+						<!-- post edit and delete -->
+						<!-- only visible on mobile and tablet resolution -->
+						<div class="btn-group pull-right visible-tablet visible-phone - posted on 18th August 2013, 10:34 AM ">
+							<a class="btn btn-warning btn-small post-manage-buttons" href="post-edit.php?id=<?php echo "{$row['id']}"; ?>"><i class="icon-edit"></i></a>
+							<a class="btn btn-danger btn-small post-manage-buttons" href="post-delete.php?id=<?php echo "{$row['id']}"; ?>"><i class="icon-trash"></i></a>
+						</div>
+						<!-- only visible on desktop resolution, actions for mobile and tablet resolution are up -->
+						<div class="btn-group pull-right visible-desktop">
 						<a class="btn btn-warning btn-small post-manage-buttons" href="post-edit.php?id=<?php echo "{$row['id']}"; ?>"><i class="icon-edit"></i> Edit</a>
 						<a class="btn btn-danger btn-small post-manage-buttons" href="post-delete.php?id=<?php echo "{$row['id']}"; ?>">Delete <i class="icon-trash"></i></a>
 						</div>

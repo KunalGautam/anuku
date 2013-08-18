@@ -59,7 +59,7 @@ if (isset($_POST['deleteconfirm'])) {
 		<link href="../template/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 		<!-- JS beauties go here -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="../template/bootstrap/js/jquery-1.9.1.min.js"></script>
 		<script src="../template/bootstrap/js/bootstrap.js"></script>
 
 	</head>
@@ -94,11 +94,11 @@ if (isset($_POST['deleteconfirm'])) {
 				</div>
 				<div class="row">
 						<div class="span8 offset2">
-							<button type="submit" class="btn btn-danger btn-large" name="deleteconfirm">
-								Yes Sure, Delete
+							<button type="submit" class="btn btn-danger btn-large pull-right" name="deleteconfirm">
+								Yes
 							</button>
-							<button type="submit" class="btn btn-inverse btn-large pull-right" name="deletecancel">
-								Do not Delete
+							<button type="submit" class="btn btn-inverse btn-large" name="deletecancel">
+								No
 							</button>
 
 						</div>
