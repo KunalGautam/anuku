@@ -19,6 +19,6 @@ Anuku is Content Management System Simplified. It just works "out of the box". Y
 
 * *Kunal*	-	kunal@ikunal.in
 
-###Note: The project is not ready for any production use. Aplha release of the project will be out soon. We do not assume any responsibility if something breaks or any loses resulting from it.###
+###Note: This is only an Alpha release. The project is not ready for any production use. We do not assume any responsibility if something breaks or any loses resulting from it.###
 <br/>
-**Feel free to fork/use/report bugs. Open Source License pending.**
+**Feel free to fork/use/report bugs/suggest enhancements. Anuku is licensed under Apache License.**

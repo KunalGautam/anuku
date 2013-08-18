@@ -60,13 +60,14 @@ if (isset($_POST['cancel'])) {
 		<link href="../template/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 		<!-- JS beauties go here -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="../template/bootstrap/js/jquery-1.9.1.min.js"></script>
 		<script src="../template/bootstrap/js/bootstrap.js"></script>
-        <!-- Disabling the editor plugin for now as it breaks the responsive layout -->
-		<!-- <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">
-			bkLib.onDomLoaded(nicEditors.allTextAreas);
-		</script> -->
+		tinymce.init({
+		    selector: "textarea"
+		 });
+		</script>
 
 	</head>
 
@@ -110,12 +111,13 @@ if (isset($_POST['cancel'])) {
 						</div>
 					</div>
 					<br />
+					<!-- actionable buttons always on right side, positive UX ;) -->
 					<div class="row">
 						<div class="span8 offset2">
-							<button type="submit" class="btn btn-success btn-large" name="publish">
+							<button type="submit" class="btn btn-success btn-large pull-right" name="publish">
 								Publish
 							</button>
-							<button type="submit" class="btn btn-inverse btn-large pull-right" name="cancel">
+							<button type="submit" class="btn btn-inverse btn-large" name="cancel">
 								Cancel
 							</button>
 
