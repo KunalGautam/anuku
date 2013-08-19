@@ -40,12 +40,16 @@
         <?php
 // as this file may be called directly from check.php, no error number is assigned. Hence initialised it with blank error variable
 $error = "";
+if ($_GET['error'] == '0') {
+    echo "<code>Unable to connect to Database, Please check if your MySQL server is reachable or not.</code>";
+}
 if (isset($_GET['error'])) {
     // This error is called from step2.php is database detail is wrong.
     if ($_GET['error'] == '1') {
-        echo "<code>Error while connecting database. Please check all details again</code>";
-    } else {
-        echo "<code>Database doesn't exsists. Please check all details again</code>";
+        echo "<code>Unable to authenticate with details provided. Please check details again</code>";
+    }
+    if ($_GET['error'] == '2') {
+        echo "<code>Database doesn't exsists for selected user details. Please check details again</code>";
     }
 }
 ?>
