@@ -170,42 +170,66 @@ function split_sql_file($sql, $delimiter)
 
     return $output;
 }
+$server = $_POST['server'];
+$user = $_POST['user'];
+$password = $_POST['password'];
+$db = $_POST['db'];
 
 
-$conn = @mysql_pconnect($_POST['server'], $_POST['user'], $_POST['password']); // "@" is necessary.
-if (!$conn) {
+try {
+    $dbh = new PDO('mysql:host=' . $server);
+    $dbh = null;
+}
+//If host is alive check if details in config file are ok or not
+catch (PDOException $e) {
+    header("Location: step1.php?error=0"); //Redirect as server is unreachable
+    exit;
+}
+try {
+    $dbh = new PDO('mysql:host=' . $server, $user, $password);
+    $dbh = null;
+}
+catch (PDOException $e) {
     header("Location: step1.php?error=1"); //Redirect as server info is incorrectly fed
+    exit;
+}
+try {
+    $dbh = new PDO('mysql:host=' . $server . ';dbname=' . $db, $user, $password);
+    $dbh = null;
+}
+catch (PDOException $e) {
+    header("Location: step1.php?error=2"); //Redirect as server info is incorrectly fed
+    exit;
 }
 
-if (!mysql_select_db($_POST['db'], $conn)) {
-    header("Location: step1.php?error=2"); // redirect as user don't have that db created
-}
+
 //From where to import sql file
 $dbms_schema = 'db/cms.sql';
 $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem ');
 $sql_query = remove_remarks($sql_query);
 $sql_query = split_sql_file($sql_query, ';');
-mysql_connect($_POST['server'], $_POST['user'], $_POST['password']) or die('error connection');
-mysql_select_db($_POST['db']) or die('error database selection');
+
+
 $i = 1;
 foreach ($sql_query as $sql) {
     echo $i++;
     echo "
 ";
-    mysql_query($sql) or die('error in query');
+    $dbh = new PDO('mysql:host=' . $server . ';dbname=' . $db, $user, $password);
+    $dbh->query($sql);
+    $dbh = null;
+
 }
-mysql_close();
+
 //After successful import, it will create config file with all configs
-$server = $_POST['server'];
-$user = $_POST['user'];
-$password = $_POST['password'];
-$db = $_POST['db'];
+
 $fp = fopen("../config.php", "w");
 $savestring = "<?php\n\$server = \"" . $server . "\";\n\$user = \"" . $user . "\";\n\$password = \"" .
     $password . "\";\n\$db = \"" . $db . "\";\n?>";
 fwrite($fp, $savestring);
 fclose($fp);
 //End of config file update
+
 
 ?>
 <!DOCTYPE html>
