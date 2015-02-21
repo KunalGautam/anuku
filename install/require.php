@@ -17,7 +17,7 @@ $filename = '../config.php';
 if (file_exists($filename)) {
     echo "The Config file exists<br/>";
 } else {
-    echo "The file config.php does not exist, it was created.<br/>";
+    echo "Unable to create config file. Please check folder permission.<br/>";
     if (is_writable($filename)) {
         echo 'config file is writable';
         $score = $score + 1;
