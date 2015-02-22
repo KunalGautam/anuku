@@ -42,10 +42,10 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Release Notes Ver 0.1:</h1>
+          <h1>Release Notes Ver 2.0:</h1>
         </div>
-        <p class="lead"><code>Add/Delete/Modify Content.</code></p>
-        <p class="lead"><code>Sort Content by Posting Date.</code></p>
+        <p class="lead"><code>Using PHP Database Object Class.</code></p>
+        
       </div>
     </div>
 

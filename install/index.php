@@ -37,7 +37,7 @@
         <div class="page-header">
           <h1>Welcome to AnuKu CMS</h1>
         </div>
-        <p class="lead">Welcome to<code>AnuKu CMS Ver 0.1</code>. AnuKu CMS is a simple and light weight CMS for your need.</p>
+        <p class="lead">Welcome to<code>AnuKu CMS Ver 2.0</code>. AnuKu CMS is a simple and light weight CMS for your need.</p>
         <p class="lead">So Lets get started with Installation.</p>
 		<p><code>Perquisistes for Installing AnuKu CMS:</code></p>
 		<p>
