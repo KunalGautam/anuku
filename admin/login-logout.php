@@ -1,7 +1,7 @@
 <?php
 
+include '../Db.class.php';
 include '../DatabaseConnection.php';
-
 class session_management {
 
 	// login function which is called from index page of admin console
@@ -11,6 +11,7 @@ class session_management {
 	// on successful login, the user is redirected to admin homepage 'home.php'
 
 	function session_login() {
+		$db = new Db();
 		global $error;
 		session_start();
 		if (isset($_SESSION['logged_in'])) {
@@ -21,13 +22,12 @@ class session_management {
 				if (empty($_POST['username']) or empty($_POST['pass'])) {
 					return $error = "Username or Password cannot be empty !";
 				} else {
-					$username = strtolower($_POST['username']);
-					$pass = md5(strtolower($_POST['pass']));
-					$dbobj = new DBConnect();
-					$dbobj -> connect();
-					$query = sprintf("select * from `user` where username='%s' and password='%s'", mysql_escape_string($username), mysql_escape_string($pass));
-					$results = $dbobj -> sqlQuery($query);
-					$num = mysql_num_rows($results);
+					$username = $_POST['username'];
+					$pass = md5($_POST['pass']);
+					
+					$db->bindMore(array("username"=>$username,"password"=>$pass));
+					$results   =  $db->query("SELECT * FROM user where username= :username and password= :password");
+					$num = sizeof($results);
 					if ($num == 1) {
 						$_SESSION['logged_in'] = TRUE;
 						$_SESSION['user'] = $username;
@@ -39,10 +39,7 @@ class session_management {
 						return $error = "Wrong Username or Password !";
 					}
 
-					if ($results) {
-
-						$dbobj -> disconnect();
-					}
+					
 				}
 			}
 		}
