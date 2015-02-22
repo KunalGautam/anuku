@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../DatabaseConnection.php';
+include '../Db.class.php';
 
 // separate session check
 if (!isset($_SESSION['logged_in'])) {
@@ -18,17 +18,16 @@ if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publ
 		$error = "Title or Content cannot be empty !";
 		$notposted = TRUE;
 	} else {
-		$dbobj = new DBConnect();
-		$dbobj -> connect();
+		$db = new Db();
 		$name = $_POST['title'];
 		$postcontent = $_POST['postcontent'];
-		$query = sprintf("insert into `data` (name,content) values ('%s','%s')", mysql_real_escape_string($name), mysql_real_escape_string($postcontent));
-		$results = $dbobj -> sqlQuery($query);
+		$db->bindMore(array("name"=>$name,"content"=>$content));
+		$results   =  $db->query("insert into `data` (name,content) values (:name, :content)");
+		
         //if insert of new post successful, set the successful alert flag
 		if ($results) {
 			$_SESSION['session_alert'] = "New Post added";
             $_SESSION['session_flag'] = "alert-info";
-			$dbobj -> disconnect();
 			header('Location:index.php');
 		}
 	}
