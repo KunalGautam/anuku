@@ -1,13 +1,10 @@
 <?php
 //Check if config is ok. If not redirect to installation
 include 'check.php';
-dbconnect($server, $user, $password, $db);
-// End Of Check
+require("Db.class.php");
+
 
 session_start();
-
-include 'DatabaseConnection.php';
-
 // function logic to strip the snippet for article on homepage if the length is > 300
 function truncate_content($strip) {
     $strip = substr($strip,0,300);
@@ -18,9 +15,7 @@ function truncate_content($strip) {
 
 // Retrieve all the artciles from DB to show on homepage
 // also can sort the articles based on time
-$dbobj = new DBConnect();
-
-$dbobj -> connect();
+$db = new Db();
 
 if (!isset($_GET['sort'])) {
 	$sorttime = "DESC";
@@ -31,13 +26,8 @@ if (!isset($_GET['sort'])) {
 }
 
 $query = sprintf("select * from `data` order by `time` %s", $sorttime);
+$results 	 =     $db->query($query);
 
-$results = $dbobj -> sqlQuery($query);
-
-if ($results) {
-
-	$dbobj -> disconnect();
-}
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +123,7 @@ if ($results) {
 			<div class="row">
 				<div class="span8 offset2">
 					<ol>
-					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
+					<?php foreach ($results as $row) {
 					?>
 					<!-- display the title -->
 					<li class="article">

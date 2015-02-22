@@ -1,26 +1,21 @@
 <?php
-
-session_start();
-
-include 'DatabaseConnection.php';
+//Check if config is ok. If not redirect to installation
+include 'check.php';
+require("Db.class.php");
 
 // Retrieve single article from DB
 if (isset($_GET['id'])) {
-	$dbobj = new DBConnect();
-	$dbobj -> connect();
+	$db = new Db();
 	$id = $_GET['id'];
 	$query = sprintf('select * from `data` where id = %d', $id);
-	$results = $dbobj -> sqlQuery($query);
-	$row = mysql_fetch_array($results, MYSQL_ASSOC);
-	if ($results) {
-
-		$dbobj -> disconnect();
-	}
+	$results 	 =     $db->query($query);
+	
 } else {
 	header('Location: index.php');
 	exit();
 }
-?>
+foreach ($results as $row) {
+					?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,3 +120,6 @@ if (isset($_GET['id'])) {
 			</div>
 	</body>
 </html>
+<?php
+}
+?>
