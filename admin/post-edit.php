@@ -2,54 +2,41 @@
 
 session_start();
 
-include '../DatabaseConnection.php';
+include '../Db.class.php';
 
 // if the session is set and there is no post or post cancel, just fetch the article from DB and fill up the edit form
 if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST['cancel'])))) {
 
 	$id = $_GET['id'];
+ 
+	
+				
+					
 
-	$dbobj = new DBConnect();
-
-	$dbobj -> connect();
-
-	$query = sprintf("select * from `data` where id = %d", $id);
-
-	$results = $dbobj -> sqlQuery($query);
-
-	$row = mysql_fetch_array($results, MYSQL_ASSOC);
-
-	if ($results) {
-
-		$dbobj -> disconnect();
-	}
     // if post update, update the record in DB
 } elseif (isset($_POST['update'])) {
-
+$id = $_GET['id'];
 	if (isset($_POST['title']) && isset($_POST['postcontent'])) {
 		if (empty($_POST['title']) or empty($_POST['postcontent'])) {
 			$error = "Title or Content cannot be empty !";
 			$notposted = TRUE;
 		} else {
 
-			$dbobj = new DBConnect();
-
-			$dbobj -> connect();
+			$db = new Db();
 
 			$name = $_POST['title'];
 
 			$postcontent = $_POST['postcontent'];
 
 			$id = $_GET['id'];
-
-			$query = sprintf("update `data` set name='%s',content='%s' where id=%d", mysql_real_escape_string($name), mysql_real_escape_string($postcontent), $id);
-
-			$results = $dbobj -> sqlQuery($query);
+			$results	= $db->query("update `data` set name= :name,content= :content where id= :id",
+									array("id"=>$id, "name"=>$name, "content"=>$postcontent));
+			
             //if update successful, set the successful alert flag
 			if ($results) {
 				$_SESSION['session_alert'] = 'Post updated';
                 $_SESSION['session_flag'] = "alert-info";
-				$dbobj -> disconnect();
+				
 				header('Location:index.php');
 				exit();
 			}
@@ -67,9 +54,11 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 	header('Location:index.php');
 	exit();
 }
-?>
 
-<!DOCTYPE html>
+
+?>
+				
+			<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -131,6 +120,11 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 						<div class="span8 offset2">
 							<fieldset>
 								<h2>Edit Post</h2>
+								<?php 
+									$db = new Db();
+									$results	= $db->query("SELECT * FROM data WHERE id = :id",array("id"=>$id));
+									foreach ($results as $row) {
+								?>
 								<input class="input-block-level title" type="text" name="title" value="<?php
 								if (isset($row))
 								{ echo "{$row['name']}";
@@ -143,7 +137,7 @@ if (isset($_SESSION['logged_in']) && (!isset($_POST['update']) && (!isset($_POST
 									echo "{$row['content']}";
 								} elseif (isset($notposted)) {
 									echo $_POST['postcontent'];
-								} ?></textarea>
+								} } ?></textarea>
 						</div>	
 					</div>
 					<br />
