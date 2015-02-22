@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../DatabaseConnection.php';
+include '../Db.class.php';
 
 $id = $_GET['id'];
 
@@ -15,17 +15,13 @@ if (!isset($_SESSION['logged_in'])) {
 
 if (isset($_POST['deleteconfirm'])) {
 
-	$dbobj = new DBConnect();
-
-	$dbobj -> connect();
-
-	$query = sprintf("delete from `data` where id = %d", $id);
-
-	$results = $dbobj -> sqlQuery($query);
+		$db = new Db();
+		$results	= $db->query("DELETE FROM data WHERE Id = :id",array("id"=>$id)); 
+	
 
 	if ($results) {
 
-		$dbobj -> disconnect();
+		
 		$_SESSION['session_alert'] = "Post Deleted";
         $_SESSION['session_flag'] = "alert-error";
 		header('Location:home.php');

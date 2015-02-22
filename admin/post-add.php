@@ -21,7 +21,7 @@ if (isset($_POST['title']) && isset($_POST['postcontent']) && isset($_POST['publ
 		$db = new Db();
 		$name = $_POST['title'];
 		$postcontent = $_POST['postcontent'];
-		$db->bindMore(array("name"=>$name,"content"=>$content));
+		$db->bindMore(array("name"=>$name,"content"=>$postcontent));
 		$results   =  $db->query("insert into `data` (name,content) values (:name, :content)");
 		
         //if insert of new post successful, set the successful alert flag
