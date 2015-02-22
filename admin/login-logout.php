@@ -1,7 +1,6 @@
 <?php
 
 include '../Db.class.php';
-include '../DatabaseConnection.php';
 class session_management {
 
 	// login function which is called from index page of admin console
