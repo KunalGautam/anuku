@@ -16,9 +16,7 @@ if (isset($_GET['logout'])) {
 // check session and retrieve all the artciles from DB
 if (isset($_SESSION['logged_in'])) {
 
-	$dbobj = new DBConnect();
-
-	$dbobj -> connect();
+	$db = new Db();
 
 	if (!isset($_GET['sort'])) {
 		$sorttime = "DESC";
@@ -30,12 +28,8 @@ if (isset($_SESSION['logged_in'])) {
 
 	$query = sprintf("select * from `data` order by `time` %s", $sorttime);
 
-	$results = $dbobj -> sqlQuery($query);
+	$results 	 =     $db->query($query);
 
-	if ($results) {
-
-		$dbobj -> disconnect();
-	}
 
 } else {
 	header('Location:index.php');
@@ -139,7 +133,7 @@ if (isset($_SESSION['logged_in'])) {
 			<div class="row">
 				<div class="span8 offset2">
 					<ol>
-					<?php while ($row = mysql_fetch_array($results, MYSQL_ASSOC)) {
+					<?php foreach ($results as $row) {
 					?>
 					<!-- display the title -->
 					<li class="article">
